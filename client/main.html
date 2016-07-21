@@ -1,0 +1,47 @@
+<head>
+  <title>autoform_materialize_date</title>
+</head>
+
+<body>
+
+  {{> pickadate}}
+</body>
+
+
+
+<template name="pickadate">
+
+  <h5>djhi/meteor-autoform-materialize Timezone ID error</h5>
+
+  <p> pickadate with timezone function is not working as documented. </p>
+
+
+
+    {{#autoForm collection="Books" id="insertBookForm" type="insert"}}
+
+    <p> Without specifying a timezone it works perfectly. </p>
+
+      {{> afFieldInput name='pickadate' }}
+
+    <p> Specifying a timezoneId="America/Los_Angeles" isn't persisting the stored date in that timezone.  What is persisted is the same as above. </p>
+      {{> afFieldInput name='pickadateTimezone'}}
+
+    <p> for comparison here is the default Autoform type=date </p>
+    {{> afFieldInput name='autoFormDate' }}
+
+
+    <!-- <p> Autoform type=datetime-local </p>
+    {{> afFieldInput name='datetime' }} -->
+
+
+      <button type="submit" class="btn btn-primary">Insert</button>
+
+    {{/autoForm}}
+
+    <!-- <p> {{ showCollection }} </p> -->
+    <ul>
+      {{#each showCollection }}
+      <li> pickadate: {{this.pickadate}} , pickadateTimezone: {{this.pickadateTimezone}} , autoFormDate: {{this.autoFormDate}} </li>
+      {{/each}}
+    </ul>
+</template>
